@@ -43,12 +43,29 @@ class SearchResultController {
         // Now create the request url tht will be sent to iTunes
         guard let requestURL = components?.url else {
             NSLog("requestURL is nil")
-            completion()
+            completion(NSError())
             return
         }
         
-        // A successful request URL has been created, now specify the REST method: GET
+        // A successful request URL has been created, now specify the REST request method: GET
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
         
+        // Initiate the URLSession datatask and going to iTunes, be right back with some data...
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            // Unable to query the API so log the error and return
+            if let error = error {
+                NSLog("Error fetching data from iTunes API: \(error)")
+                return
+            }
+            
+            // The request was successful, let's check the data
+            guard let data = data else {
+                NSLog("No data returned from datatask")
+            }
+        }
+        
+        //
         
     }
 }
