@@ -14,6 +14,7 @@
 		37D999612282167500CB18EC /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D999602282167500CB18EC /* SearchResult.swift */; };
 		37D99963228219C400CB18EC /* ResultType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D99962228219C400CB18EC /* ResultType.swift */; };
 		37D9996522821ADE00CB18EC /* SearchResultController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9996422821ADE00CB18EC /* SearchResultController.swift */; };
+		37D9996922830E8B00CB18EC /* SearchResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D9996822830E8B00CB18EC /* SearchResultsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		37D999602282167500CB18EC /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		37D99962228219C400CB18EC /* ResultType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultType.swift; sourceTree = "<group>"; };
 		37D9996422821ADE00CB18EC /* SearchResultController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultController.swift; sourceTree = "<group>"; };
+		37D9996822830E8B00CB18EC /* SearchResultsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 		37D9995F2282109400CB18EC /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				37D9996822830E8B00CB18EC /* SearchResultsTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 			files = (
 				37D9996522821ADE00CB18EC /* SearchResultController.swift in Sources */,
 				37D999612282167500CB18EC /* SearchResult.swift in Sources */,
+				37D9996922830E8B00CB18EC /* SearchResultsTableViewController.swift in Sources */,
 				37D99963228219C400CB18EC /* ResultType.swift in Sources */,
 				37D9994A22820FD500CB18EC /* AppDelegate.swift in Sources */,
 			);

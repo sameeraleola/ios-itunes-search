@@ -23,12 +23,12 @@ class SearchResultController {
     let baseURL = URL(string: "https://itunes.apple.com")!
     var searchResults: [SearchResult] = []
     
-    // MARK: - URLSession
+    // MARK: - :: Create Network Session ::
     
     func performSearch(with searchTerm: String, resultType: ResultType, completion: @escaping (NSError?) -> Void) {
         
         // Create a variable to store the full request url
-        var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
+        var urlComponents = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)
         
         //Create the necessary iTuners query parameters:
         let queryParameterSearchTerm = URLQueryItem(name: "term", value: searchTerm)
@@ -38,14 +38,16 @@ class SearchResultController {
         let queryParameterLang = URLQueryItem(name: "lang", value: "en_us")
         
         // Create the url components
-        components?.queryItems = [queryParameterSearchTerm, queryParameterCountry, queryParameterEntity, queryParameterLimit, queryParameterLang]
+        urlComponents?.queryItems = [queryParameterSearchTerm, queryParameterCountry, queryParameterEntity, queryParameterLimit, queryParameterLang]
         
         // Now create the request url tht will be sent to iTunes
-        guard let requestURL = components?.url else {
-            NSLog("requestURL is nil")
+        guard let requestURL = urlComponents?.url else {
+            NSLog("Unable to make iTunes search request URL")
             completion(NSError())
             return
         }
+        
+        // MARK: URLSession
         
         // A successful request URL has been created, now specify the REST request method: GET
         var request = URLRequest(url: requestURL)
@@ -53,22 +55,30 @@ class SearchResultController {
         
         // Initiate the URLSession datatask and going to iTunes, be right back with some data...
         URLSession.shared.dataTask(with: request) { (data, _, error) in
-            // Unable to query the API so log the error and return
             if let error = error {
-                NSLog("Error fetching data from iTunes API: \(error)")
+                NSLog("Error fetching data: \(error)")
+            }
+            
+            // No error so try and unwrap the data
+            guard let data = data else {
+                NSLog("No data returned from data task")
                 return
             }
             
-            // The request was successful, let's check the data
-            guard let data = data else {
-                NSLog("No data returned from datatask")
+            // MARK: Decode JSON
+            
+            // Retrieved data. Set up a JSON decoder
+            let jsonDecoder = JSONDecoder()
+            
+            // Now let's decode the data
+            do {
+                let decodedSessionData = try jsonDecoder.decode(SearchResult.self, from: data)
+                self.searchResults.append(decodedSessionData)
+            } catch {
+                NSLog("Unable to decode iTunes data into type [SearchResult]: \(error)")
             }
-        }
-        
-        //
-        
-    }
+            completion(nil)
+        } .resume() // Start network session
+    } // End of network request
+    
 }
-
-
-// let searchTermQueryItem = URLQueryItem(name: "search", value: searchTerm)
