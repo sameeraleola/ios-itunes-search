@@ -21,11 +21,11 @@
                             <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VXg-pz-e3B">
-                                    <rect key="frame" x="0.0" y="12" width="414" height="92"/>
+                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="VXg-pz-e3B">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="92"/>
                                     <subviews>
                                         <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1h2-wy-Vhe">
-                                            <rect key="frame" x="16" y="0.0" width="382" height="29"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
                                             <segments>
                                                 <segment title="Apps"/>
                                                 <segment title="Music"/>
@@ -41,36 +41,34 @@
                                         </searchBar>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="1h2-wy-Vhe" secondAttribute="trailing" constant="16" id="Jmy-mV-9na"/>
-                                        <constraint firstItem="1h2-wy-Vhe" firstAttribute="leading" secondItem="VXg-pz-e3B" secondAttribute="leading" constant="16" id="nsm-dq-owj"/>
+                                        <constraint firstAttribute="bottom" secondItem="6xo-8t-DMQ" secondAttribute="bottom" id="kR2-l6-3bd"/>
                                     </constraints>
                                 </stackView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstItem="VXg-pz-e3B" firstAttribute="leading" secondItem="wXJ-fY-70D" secondAttribute="leading" id="1nT-El-QRA"/>
-                                <constraint firstAttribute="bottom" secondItem="VXg-pz-e3B" secondAttribute="bottom" constant="-4" id="L5K-C3-VW6"/>
-                                <constraint firstAttribute="trailing" secondItem="VXg-pz-e3B" secondAttribute="trailing" id="l26-ZV-y3e"/>
-                                <constraint firstItem="VXg-pz-e3B" firstAttribute="leading" secondItem="wXJ-fY-70D" secondAttribute="leading" id="pJn-wg-uqz"/>
+                                <constraint firstItem="VXg-pz-e3B" firstAttribute="top" secondItem="wXJ-fY-70D" secondAttribute="top" id="0y4-NZ-KU0"/>
+                                <constraint firstItem="VXg-pz-e3B" firstAttribute="leading" secondItem="wXJ-fY-70D" secondAttribute="leading" id="A9s-9X-nDb"/>
+                                <constraint firstAttribute="trailing" secondItem="VXg-pz-e3B" secondAttribute="trailing" id="Bmt-q3-V1y"/>
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" textLabel="fyb-s3-bCS" detailTextLabel="Rpb-EJ-04M" style="IBUITableViewCellStyleSubtitle" id="zg2-uB-98e">
-                                <rect key="frame" x="0.0" y="128" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleCell" textLabel="fyb-s3-bCS" detailTextLabel="Rpb-EJ-04M" rowHeight="52" style="IBUITableViewCellStyleSubtitle" id="zg2-uB-98e">
+                                <rect key="frame" x="0.0" y="128" width="414" height="52"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zg2-uB-98e" id="SJ9-yM-wLc">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="51.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fyb-s3-bCS">
-                                            <rect key="frame" x="20" y="5" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="20" y="9" width="33.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Rpb-EJ-04M">
-                                            <rect key="frame" x="20" y="25.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="20" y="29.5" width="44" height="14.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                             <nil key="textColor"/>
@@ -81,19 +79,18 @@
                             </tableViewCell>
                         </prototypes>
                         <connections>
-                            <outlet property="dataSource" destination="f1J-XQ-ucX" id="DiX-gg-Zqe"/>
                             <outlet property="delegate" destination="f1J-XQ-ucX" id="iQH-OF-Jb7"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="iTunes Search" id="2uV-4z-sgR"/>
                     <connections>
-                        <outlet property="searchBar" destination="6xo-8t-DMQ" id="1Il-Qc-sgi"/>
+                        <outlet property="searchBar" destination="6xo-8t-DMQ" id="4w6-LK-dqe"/>
                         <outlet property="segmentControl" destination="1h2-wy-Vhe" id="Jgc-1e-eqw"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="r87-cm-QFF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="325" y="143"/>
+            <point key="canvasLocation" x="324.63768115942031" y="142.63392857142856"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="lR6-wF-IvQ">
