@@ -25,7 +25,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //searchBar.delegate = self
+        searchBar.delegate = self
     }
 
     // MARK: - Table view data source
@@ -51,7 +51,7 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        var mediaType: ResultType!
+        var resultType: ResultType!
         
         // Get the search term from the search bar
         guard let searchTerm = searchBar.text else { return }
@@ -62,21 +62,20 @@ class SearchResultsTableViewController: UITableViewController, UISearchBarDelega
         // Set the resultType based on the segment selected
         switch segmentSelected {
             case 0:
-                mediaType = ResultType.software
+                resultType = .software
             case 1:
-                mediaType = ResultType.musicTrack
+                resultType = .musicTrack
             case 2:
-                mediaType = ResultType.movie
+                resultType = .movie
             default:
-                mediaType = ResultType.software
+                resultType = .software
         }
         
         // Produce the url request string
-        searchResultsController.performSearch(with: searchTerm, resultType: mediaType) { (error) in
-            if error == nil {
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
+        searchResultsController.performSearch(with: searchTerm, resultType: resultType) { _ in
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                
             }
         }
     }

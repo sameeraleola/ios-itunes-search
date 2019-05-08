@@ -20,7 +20,7 @@ class SearchResultController {
         case delete = "DELETE"
     }
     
-    let baseURL = URL(string: "https://itunes.apple.com")!
+    let baseURL = URL(string: "https://itunes.apple.com/search")!
     var searchResults: [SearchResult] = []
     
     // MARK: - :: Create Network Session ::
@@ -72,8 +72,8 @@ class SearchResultController {
             
             // Now let's decode the data
             do {
-                let decodedSessionData = try jsonDecoder.decode(SearchResult.self, from: data)
-                self.searchResults.append(decodedSessionData)
+                let decodedSessionData = try jsonDecoder.decode(SearchResults.self, from: data)
+                self.searchResults = decodedSessionData.results
             } catch {
                 NSLog("Unable to decode iTunes data into type [SearchResult]: \(error)")
             }

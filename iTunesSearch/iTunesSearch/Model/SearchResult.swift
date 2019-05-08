@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct SearchResult: Decodable {
-    let title: String
+struct SearchResult: Decodable{
+    let title: String?
     let creator: String
     
     enum CodingKeys: String, CodingKey {
